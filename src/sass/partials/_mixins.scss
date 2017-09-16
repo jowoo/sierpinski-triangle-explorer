@@ -1,0 +1,38 @@
+@mixin set-min-height($height: 1em) {
+    height: $height;
+    min-height: $height;
+}
+
+@mixin list-box($width: 10, $height: 10, $margin: 0.5em, $colour: #fff) {
+    border: 1px solid $colour;
+    float: left;
+    height: $height;
+    margin-right: $margin;
+    width: $width;
+}
+
+@mixin align-text($pos: right) {
+    text-align: $pos;
+}
+
+@mixin padding($top: 0, $right: 0, $bottom: 0, $left: 0) {
+    padding: $top $right $bottom $left;
+}
+
+@mixin margin($top: 0, $right: 0, $bottom: 0, $left: 0) {
+    margin: $top $right $bottom $left;
+}
+
+@mixin vertical-border($width: 1px, $colour: #fff) {
+    border-bottom: $width solid $colour;
+    border-left: 0;
+    border-right: 0;
+    border-top: $width solid $colour;
+}
+
+@mixin horizontal-border($width: 1px, $colour: #fff) {
+    border-bottom: 0;
+    border-left: $width solid $colour;
+    border-right: $width solid $colour;
+    border-top: 0;
+}

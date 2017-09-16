@@ -1,0 +1,39 @@
+.page {
+    @extend %pos-rel;
+    @extend %plain-background;
+    @extend %margin0;
+    @extend %padding0;
+    color: $text-colour;
+    cursor: pointer;
+    font-family: $font-family, arial;
+    overflow: hidden;
+    white-space: nowrap;
+    &-element {
+        &__border {
+            border: solid 1px $banner-black;
+            height: $banner-height - 2;
+            width: $banner-width - 2;
+            z-index: 9999;
+        }
+        &__content {
+            div,
+            img {
+                @extend %pos-abs;
+            }
+            p {
+                @extend %margin0;
+                @extend %padding0;
+            }
+            &.center {
+                @extend %center;
+            }
+            &.hide {
+                @extend %hide;
+            }
+            &.show {
+                @extend %show;
+            }
+        }
+        @extend %plain-background;
+    }
+}

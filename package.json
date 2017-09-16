@@ -1,0 +1,34 @@
+{
+  "name": "sierpinski-triangle-explorer",
+  "version": "1.0.0",
+  "description": "Sierpinski triangle explorer using pan and zoom",
+  "main": "index.js",
+  "scripts": {
+    "dev": "webpack-dev-server --env.dest=dev --progress --inline",
+    "dist": "webpack --env.dest=prod",
+    "clean": "rimraf ./dist/*"
+  },
+  "author": "Joel Woods",
+  "license": "ISC",
+  "devDependencies": {
+    "bootstrap-sass": "^3.3.7",
+    "clean-webpack-plugin": "^0.1.16",
+    "css-loader": "^0.28.7",
+    "extract-text-webpack-plugin": "^3.0.0",
+    "file-loader": "^0.11.2",
+    "html-webpack-plugin": "^2.30.1",
+    "image-webpack-loader": "^3.4.2",
+    "imagemin-webpack-plugin": "^1.5.2",
+    "node-sass": "^4.5.3",
+    "pug": "^2.0.0-rc.4",
+    "pug-loader": "^2.3.0",
+    "resolve-url-loader": "^2.1.0",
+    "sass-lint": "^1.11.1",
+    "sass-loader": "^6.0.6",
+    "style-loader": "^0.18.2",
+    "url-loader": "^0.5.9",
+    "webpack": "^3.6.0",
+    "webpack-dev-server": "^2.8.2",
+    "webpack-merge": "^4.1.0"
+  }
+}

@@ -1,0 +1,69 @@
+//utils
+%hide {
+    display: none;
+}
+
+%show {
+    display: block;
+}
+
+%fl {
+    float: left;
+}
+
+%block {
+    display: block;
+}
+
+%banner-dimensions {
+    height: $banner-height;
+    width: $banner-width;
+}
+
+%margin0 {
+    margin: 0;
+}
+
+%padding0 {
+    padding: 0;
+}
+
+%pos-rel {
+    position: relative;
+}
+
+%pos-abs {
+    position: absolute;
+}
+
+%link-text {
+    text-decoration: none;
+}
+
+%button-enabled {
+    color: inherit;
+    cursor: pointer;
+    text-decoration: inherit;
+}
+
+%list-style-default {
+    list-style-type: none;
+}
+
+%text-to-uppercase {
+    text-transform: uppercase;
+}
+
+%center {
+    @extend %pos-rel;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+// backgrounds
+%plain-background {
+    @extend %banner-dimensions;
+    background-color: $banner-color;
+}
