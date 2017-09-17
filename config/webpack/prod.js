@@ -15,16 +15,25 @@ module.exports = function (env) {
                 {
                     test: /\.scss$/,
                     use: scss.extract({
-                        use: [
-                            "css-loader", "sass-loader"
-                        ],
+                        use: [{
+                            loader:"css-loader",
+                            options: { importLoaders: 1 }
+                        },{
+                            loader:"postcss-loader"
+                        }, {
+                            loader:"sass-loader"
+                        }],
                         fallback: "style-loader"
-                    })
+                        }
+                    )
                 }
             ]
         },
         plugins: [
-            new webpack.LoaderOptionsPlugin({minimize: true, debug: false}),
+            new webpack.LoaderOptionsPlugin({
+                minimize: true, 
+                debug: false
+            }),
             new webpack.DefinePlugin({
                 'process.env': {
                     'NODE_ENV': JSON.stringify('production')
@@ -47,7 +56,8 @@ module.exports = function (env) {
                 .UglifyJsPlugin({
                     beautify: false,
                     compress: {
-                        warnings: true
+                        warnings: false,
+                        drop_console: true
                     },
                     comments: false
                 }),

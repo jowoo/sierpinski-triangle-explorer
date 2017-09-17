@@ -64,6 +64,5 @@
 
 // backgrounds
 %plain-background {
-    @extend %page-dimensions;
     background-color: $page-color;
 }

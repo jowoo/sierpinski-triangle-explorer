@@ -1,12 +1,13 @@
 const webpack = require('webpack');
 const path = require('path');
 const html = require('html-webpack-plugin');
+const pkg = require("../../package.json");
 
 module.exports = function () {
 
     return {
         entry: {
-            // vendor: [],
+            vendor: ['d3'],
             main: ['./src/scripts/index.js', './src/sass/app.scss']
         },
         output: {
@@ -15,7 +16,14 @@ module.exports = function () {
         },
         resolve: {
             modules: ["node_modules"],
-            extensions: [".ts", ".tsx", ".js", ".json", ".css", ".scss"]
+            extensions: [
+                ".ts",
+                ".tsx",
+                ".js",
+                ".json",
+                ".css",
+                ".scss"
+            ]
         },
         module: {
             rules: [
@@ -41,14 +49,17 @@ module.exports = function () {
             ]
         },
         plugins: [
-            new webpack.ProvidePlugin({}),
+            new webpack.ProvidePlugin({
+                d3: 'd3'
+            }),
             new html({
                 template: path.join(process.cwd(), './src/pug/page.pug'),
                 filename: 'index.html',
-                title: 'webpack, d3 & bootstrap-sass starter'
+                title: pkg.description,
+                author: pkg.author
             }),
-            new webpack     
-                .optimize     
+            new webpack
+                .optimize
                 .CommonsChunkPlugin({name: ["vendor"], minChunks: Infinity})
         ]
     };
