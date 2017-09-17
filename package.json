@@ -1,7 +1,7 @@
 {
-  "name": "webpack-d3-bootstrap-sass-starter",
+  "name": "sierpinski-triangle-explorer",
   "version": "1.0.0",
-  "description": "Webpack d3 bootstrap sass starter project",
+  "description": "Sierpinski triangle explorer",
   "main": "index.js",
   "scripts": {
     "dev": "webpack-dev-server --env.dest=dev --progress --inline",
