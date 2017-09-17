@@ -1,14 +1,14 @@
 # Sierpinski Triangle Explorer
 
-- Sierpinski trianlge explore using pan and zoom.
+- Sierpinski trianlge explore using pan and zoom
 
 ## Built-with
 
-Webpack
-D3
-Bootsrap-Sass
+- Webpack
+- D3
+- Bootsrap-Sass
 
-## Installing
+## Installing and running
 
 npm:
 - npm i
