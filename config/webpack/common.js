@@ -45,7 +45,7 @@ module.exports = function () {
             new html({
                 template: path.join(process.cwd(), './src/pug/page.pug'),
                 filename: 'index.html',
-                title: 'sierpinski-triangle-explorer'
+                title: 'webpack, d3 & bootstrap-sass starter'
             }),
             new webpack     
                 .optimize     
