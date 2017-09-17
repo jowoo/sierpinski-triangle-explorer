@@ -3,14 +3,12 @@ import {generatePoints} from "./utils";
 
 class Sierpinski {
 
-    constructor({d, el, depth, viewWidth, viewHeight}) {
+    constructor({depth, element, viewWidth, viewHeight, triangleHeight}) {
         
         this.parent;
         this.child;
-        this.depth = d;
-        this.el = el;
-
-        let tHeight = 340;
+        this.depth = depth;
+        this.element = element;
 
         this.stage = {
             scale: 1,
@@ -19,10 +17,11 @@ class Sierpinski {
             x: viewWidth * 0.5,
             y: viewHeight * 0.5
         }
+
         this.triangle = {
-            height : tHeight,
+            height : triangleHeight,
             initialX: this.stage.width * 0.5,
-            initialY: ((this.stage.height - tHeight) * 0.5) * (this.stage.scale > 1 ? -(this.stage.scale) : this.stage.scale),
+            initialY: ((this.stage.height - triangleHeight) * 0.5) * (this.stage.scale > 1 ? -(this.stage.scale) : this.stage.scale),
             colour : "#000"
         }
 
@@ -62,7 +61,7 @@ class Sierpinski {
                         ])
                         .on("zoom", this.zoom)
         
-        let svg = d3.select(this.el)
+        let svg = d3.select(this.element)
                         .append("svg:svg")
                             .attr("id", "sierpinski-triangle-explorer")
                             .attr("preserveAspectRatio", "xMinYMin meet")
@@ -107,18 +106,6 @@ class Sierpinski {
             .attr("cy", d.y = d3.event.y);
     }
 
-    // zoomIn = () => {
-    //     this.depth += 1;
-    //     if (this.depth >= 10) 
-    //         return;
-    //     this.stage.scale += 4;
-    //     let centerY = (this.stage.height - this.triangle.height) * 0.5;
-    //     d3
-    //         .select("#sierpinski-triangle-explorer")
-    //         .remove();
-    //     this.draw();
-    // }
-
 };
 
-new Sierpinski({d: 4, el: ".page-content", viewWidth: 960, viewHeight: 500});
+new Sierpinski({depth: 4, element: ".page-content", viewWidth: 960, viewHeight: 500, triangleHeight: 340});
