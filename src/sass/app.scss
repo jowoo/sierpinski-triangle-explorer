@@ -1,6 +1,7 @@
 @import 'partials/variables';
 @import 'partials/mixins';
-@import 'partials/reset';
 @import 'partials/fonts';
-@import '~bootstrap-sass/assets/stylesheets/bootstrap/mixins';
+@import 'partials/placeholders';
+@import '~compass-mixins/lib/compass';
+@import '~bootstrap-sass/assets/stylesheets/bootstrap';
 @import 'partials/page';

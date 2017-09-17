@@ -1,3 +1,7 @@
 body
-    .container
-        h1 htmlWebpackPlugin.options.title
+    .page
+        div.page-header
+            header
+                h1= htmlWebpackPlugin.options.title
+                h2 by #{htmlWebpackPlugin.options.author}
+        div.page-content

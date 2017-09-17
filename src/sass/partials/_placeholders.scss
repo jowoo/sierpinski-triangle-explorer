@@ -15,9 +15,9 @@
     display: block;
 }
 
-%banner-dimensions {
-    height: $banner-height;
-    width: $banner-width;
+%page-dimensions {
+    height: $page-height;
+    width: $page-width;
 }
 
 %margin0 {
@@ -64,6 +64,5 @@
 
 // backgrounds
 %plain-background {
-    @extend %banner-dimensions;
-    background-color: $banner-color;
+    background-color: $page-color;
 }
