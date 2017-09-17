@@ -1,4 +1,5 @@
 .page {
+    
     @extend %pos-rel;
     @extend %plain-background;
     @extend %margin0;
@@ -10,9 +11,9 @@
     white-space: nowrap;
     &-element {
         &__border {
-            border: solid 1px $banner-black;
-            height: $banner-height - 2;
-            width: $banner-width - 2;
+            border: solid 1px #000;
+            height: $page-height - 1;
+            width: $page-width - 1;
             z-index: 9999;
         }
         &__content {

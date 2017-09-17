@@ -11,50 +11,47 @@ const purify = require('purifycss-webpack');
 module.exports = function (env) {
     return webpackMerge(commonConfig(env), {
         module: {
-            rules: [{
-                test: /\.scss$/,
-                use: scss.extract({
-                    use: [
-                        "css-loader",
-                        "sass-loader"
-                    ],
-                    fallback: "style-loader"
-                })
-            }]
+            rules: [
+                {
+                    test: /\.scss$/,
+                    use: scss.extract({
+                        use: [
+                            "css-loader", "sass-loader"
+                        ],
+                        fallback: "style-loader"
+                    })
+                }
+            ]
         },
         plugins: [
-            new webpack.LoaderOptionsPlugin({
-                minimize: true,
-                debug: false
-            }),
+            new webpack.LoaderOptionsPlugin({minimize: true, debug: false}),
             new webpack.DefinePlugin({
                 'process.env': {
                     'NODE_ENV': JSON.stringify('production')
                 }
             }),
-            new clean(['.*', '*'], {
-                root: path.join(process.cwd(), './dist'),
+            new clean([
+                'dist/.*', 'dist/*'
+            ], {
+                root: path.join(process.cwd(), './dist')
             }),
             new scss('main.css'),
-            new copy([{
-                from: path.join(process.cwd(), './src/assets/'),
-                to: 'assets/'
-            }]),
-            new webpack.optimize.UglifyJsPlugin({
-                beautify: false,
-                mangle: {
-                    screw_ie8: true,
-                    keep_fnames: true
-                },
-                compress: {
-                    screw_ie8: true,
-                    drop_console: true
-                },
-                comments: false
-            }),
-            new imagemin({
-                test: '**'
-            }),
+            new copy([
+                {
+                    from: path.join(process.cwd(), './src/assets'),
+                    to: 'assets'
+                }
+            ]),
+            new webpack
+                .optimize
+                .UglifyJsPlugin({
+                    beautify: false,
+                    compress: {
+                        warnings: true
+                    },
+                    comments: false
+                }),
+            new imagemin({test: '**'}),
             new purify({
                 paths: [path.join(process.cwd(), './src/pug/includes/body.pug')],
                 minimize: true
