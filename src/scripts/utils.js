@@ -5,7 +5,6 @@ export const generatePoints = (p1, p2, p3, r) => {
         let point1 = midPoints(p1, p2);
         let point2 = midPoints(p2, p3);
         let point3 = midPoints(p3, p1);
-
         return [...generatePoints(p1, point1, point3, r-1), ...generatePoints(point1, p2, point2, r-1), ...generatePoints(point3, point2, p3, r-1)]
     }
 }

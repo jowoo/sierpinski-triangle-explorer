@@ -5,17 +5,20 @@ class Sierpinski {
 
     constructor({depth, element, viewWidth, viewHeight, triangleHeight}) {
 
+        this.initialDepth = depth;
+        this.depth = this.initialDepth;
+        this.element = element;
+
+        this.root;
         this.parent;
         this.child;
-        this.depth = depth;
-        this.element = element;
         this.scale = d3
             .scaleLinear()
-            .domain([1, 50])
+            .domain([1, 25])
             .range([this.depth, 10]);
         this.zoom = d3
             .zoom()
-            .scaleExtent([1, 50])
+            .scaleExtent([1, 25])
             .on("zoom", this.zoom)
         this.stage = {
             scale: 1,
@@ -23,7 +26,6 @@ class Sierpinski {
             height: viewHeight,
             x: viewWidth * 0.5,
             y: viewHeight * 0.5
-            // y: viewHeight * 0.5
         }
 
         this.triangle = {
@@ -35,17 +37,6 @@ class Sierpinski {
 
         this.draw();
 
-    }
-
-    getPoints = () => {
-        return generatePoints([
-            0, 0
-        ], [
-            this.triangle.height / 2,
-            this.triangle.height
-        ], [-this.triangle.height / 2,
-            this.triangle.height
-        ], this.depth)
     }
 
     drawSierpinski = () => {
@@ -63,7 +54,7 @@ class Sierpinski {
 
     draw = () => {
 
-        let svg = d3
+        this.root = d3
             .select(this.element)
             .append("svg:svg")
             .attr("id", "sierpinski-triangle-explorer")
@@ -71,10 +62,11 @@ class Sierpinski {
             .attr("viewBox", "0 0 " + this.stage.width + ' ' + this.stage.height)
             .attr("width", "100%")
             .attr("height", "100%")
-            // .on("click", this.reDraw)
+            .on("dblclick", this.doubleClick)
             .call(this.zoom)
+            .on("dblclick.zoom", null);
 
-        this.parent = svg.append("g");
+        this.parent = this.root.append("g");
         this.child = this
             .parent
             .append("g")
@@ -84,8 +76,6 @@ class Sierpinski {
     }
 
     reDraw = () => {
-        // this.depth += 1; if (this.depth >= 10)         return;
-
         this
             .parent
             .selectAll("g")
@@ -95,30 +85,23 @@ class Sierpinski {
         this.drawSierpinski();
     }
 
+    getPoints = () => {
+        return generatePoints([
+            0, 0
+        ], [
+            this.triangle.height / 2,
+            this.triangle.height
+        ], [-this.triangle.height / 2,
+            this.triangle.height
+        ], this.depth)
+    }
+
     zoom = () => {
         const {k, x, y} = d3.event.transform;
-        // console.log(Math.ceil(k));
-        let scale = Math.ceil(this.scale(Math.ceil(k)));
+        let scale = Math.ceil(this.scale(k));
         if (this.stage.scale != scale) {
-            // console.log(scale)
-            // this.stage.scale < scale
-            //     ? this.depth += 1
-            //     : this.depth -= 1;
-
             this.stage.scale = this.depth = scale;
-            // console.log(this.depth)
-            //     this.stage.scale = scale;
-            
-            // if (this.depth > 5) 
-            //     this.depth = 5;
-
-            // if (this.depth < 1) 
-            //     this.depth = 5;
-
-            // console.log(this.depth)
             this.reDraw();
-
-            console.log(Math.ceil(this.scale(Math.ceil(k))));
         }
         this
             .parent
@@ -126,11 +109,22 @@ class Sierpinski {
 
     }
 
-    drag = function (d) {
+    drag = (d) => {
         d3
             .select(this)
             .attr("cx", d.x = d3.event.x)
             .attr("cy", d.y = d3.event.y);
+    }
+
+    doubleClick = () => {
+        this.stage.scale = 1;
+        this.depth = this.initialDepth;
+        this.parent
+            .attr("transform", "scale(" + this.stage.scale + ")")
+        this.root
+            .call(this.zoom)
+            .call(this.zoom.transform, d3.zoomIdentity);
+        this.reDraw();
     }
 
 };
