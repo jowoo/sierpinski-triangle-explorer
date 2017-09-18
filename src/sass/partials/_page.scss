@@ -1,11 +1,12 @@
 .page {
-    transition: all .5s;
     @extend %plain-background;
     color: $text-colour;
     font-family: $font-family, arial;
     &-header {
         @extend .container-fluid;
         @extend .jumbotron;
+        padding-bottom: 0;
+        padding-top: 0;
         margin: 0;
     }
     &-content {
