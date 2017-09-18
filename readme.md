@@ -17,11 +17,11 @@ npm:
 
 # Notes
 
-I decided to use D3. I've heard its used for graphs and data visualisation. It also handles svg which I initially though was a good choice for zooming without loss of quality. In retrospect my feeling to go with canvas due to performance gains was probably correct.
+I decided to use D3. I've heard its used for graphs and data visualisation. It also handles svg which I initially thought was a good choice for zooming without loss of quality. In retrospect it would have been better to go with canvas due to performance gains.
 
 Looked at various articles about Sirepnski traingles and other self organsing structures. Shrinking and duplication made most sense to me when thinking about programming the structure.
 
-I dont beleieve in re-inventing the wheel so I did look at solutions/algorithm other people have produced
+I dont beleieve in re-inventing the wheel so I did look at solutions/algorithms other people have produced
 
 I liked the simpleness of this one:
 
