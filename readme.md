@@ -1,6 +1,6 @@
 # Sierpinski Triangle Explorer
 
-- Sierpinski trianlge explore using pan and zoom
+- Sierpinski trianlge explore using pan and zoom. Use mousewheel to zoom and mouse drag to pan. Doubleclick to reset. *Please be aware it is not optimised and you may find the computer struggles*
 
 ## Built-with
 

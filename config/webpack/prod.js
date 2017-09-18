@@ -4,7 +4,6 @@ const commonConfig = require('./common.js');
 const path = require('path');
 const clean = require('clean-webpack-plugin');
 const scss = require("extract-text-webpack-plugin");
-const copy = require('copy-webpack-plugin');
 const imagemin = require('imagemin-webpack-plugin').default;
 const purify = require('purifycss-webpack');
 
@@ -45,12 +44,6 @@ module.exports = function (env) {
                 root: path.join(process.cwd(), './dist')
             }),
             new scss('main.css'),
-            new copy([
-                {
-                    from: path.join(process.cwd(), './src/assets'),
-                    to: 'assets'
-                }
-            ]),
             new webpack
                 .optimize
                 .UglifyJsPlugin({

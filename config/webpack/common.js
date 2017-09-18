@@ -39,12 +39,6 @@ module.exports = function () {
                 }, {
                     test: /\.pug$/,
                     use: 'pug-loader'
-                }, {
-                    test: /\.(gif|png|jpe?g|svg)$/i,
-                    exclude: [
-                        /fonts/, /node_modules/
-                    ],
-                    use: ['file-loader?name=[name].[ext]&outputPath=assets/']
                 }
             ]
         },

@@ -20,7 +20,6 @@
     "bootstrap-sass": "^3.3.7",
     "clean-webpack-plugin": "^0.1.16",
     "compass-mixins": "^0.12.10",
-    "copy-webpack-plugin": "^4.0.1",
     "css-loader": "^0.28.7",
     "d3": "^4.10.2",
     "eslint": "^3.19.0",
